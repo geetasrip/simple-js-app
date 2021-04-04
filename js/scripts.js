@@ -1,25 +1,66 @@
 let pokemonRepository = (function() {
-  let pokemonList = [
-    { name: "Happiny", height: 0.6, type: ["normal"] },
-    { name: "Genesect", height: 0.6, type: ["steel", "bug"] },
-    { name: "HappBulbasauriny", height: 0.7, type: ["grass", "poison"] }
-  ]; 
-  return {
-    add: function(pokemon) {
-      pokemonList.push(pokemon);
+  let repository = [
+    {
+      name: "Bulbasaur",
+      height: 0.7,
+      types: ["grass", "poison"]
     },
-    getAll: function() {
-      return pokemonList;
+    {
+      name: "Charizard",
+      height: 1.7,
+      types: ["fire", "flying"]
+    },
+    {
+      name: "Squirtle",
+      height: 1,
+      types: ["water"]
     }
+  ];
+
+  function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "types" in pokemon
+    ) {
+      repository.push(pokemon);
+    } else {
+      console.log("pokemon is not correct");
+    }
+  }
+  function getAll() {
+    return repository;
+  }
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    buttonClickAction(button, pokemon);
+  }
+  function buttonClickAction(button, pokemon) {
+    button.addEventListener("click", function(event) {
+      showDetails(pokemon);
+    });
+  }
+  function showDetails(pokemon) {
+    console.log("Pokemon Name : ", pokemon.name);
+  }
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem
   };
 })();
 
-let pokemonSizeThreshold = 0.7;
+pokemonRepository.add({ name: "Pikachu", height: 0.3, types: ["electric"] });
+
+console.log(pokemonRepository.getAll());
+
 pokemonRepository.getAll().forEach(function(pokemon) {
-  let pokemonString = `${pokemon.name} ( Height: ${pokemon.height} )`;
-  let pokemanItem =
-    pokemon.height >= pokemonSizeThreshold
-      ? `<p> ${pokemonString} - Wow, that’s big! </p>`
-      : `<p> ${pokemonString} </p>`;
-  document.write(pokemanItem);
+  pokemonRepository.addListItem(pokemon);
 });
