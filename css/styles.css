@@ -1,73 +1,5 @@
-.button-class {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: rgb(245, 241, 241);
-  color: black;
-  border: 2px solid #4caf50;
-  width: 20%;
-}
-button:hover {
-  background-color: #3e8e41;
-  transition: all 0.8s;
-}
-
-#modal-container {
-  display: none;
-}
-
-#modal-container.is-visible {
-  /* CSS for modal container - add your own desired CSS styles here */
-  display: block;
-}
-
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-
-  /* to show it above other content */
-  z-index: 999;
-
-  /* to allow scrolling if the screen is not high enough*/
-  overflow: auto;
-
-  /* this is used to center the modal */
-  display: grid;
-  text-align: center;
-}
-
-.modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
-}
-
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
+body {
+  font-family: "Bangers", cursive;
 }
 
 .modal h1 {
@@ -78,16 +10,43 @@ button:hover {
   margin-bottom: 0;
 }
 li {
-    list-style-type: none;
-    text-align: center;
+  list-style-type: none;
+  text-align: center;
 }
 @media only screen and (max-width: 600px) {
-    .button-class{
-        width: 50%;
-    }
+  .button-class {
+    width: 50%;
+  }
 }
 @media all and (min-width: 501px) and (max-width: 750px) {
-    .button-class{
-        width: 50%;
-    }
+  .button-class {
+    width: 50%;
   }
+}
+
+.modal-body {
+  text-align: center;
+}
+.modal {
+  text-align: center;
+}
+
+.list-group {
+  text-align: center;
+  width: 50%;
+  margin: 40px auto;
+}
+.btn {
+  width: 100%;
+  margin-bottom: 1%;
+}
+.navbar {
+  text-align: center;
+}
+.app-icon {
+  border-radius: 50%;
+  width: 20%;
+  height: 10%;
+  margin-right:5%;
+}
+
