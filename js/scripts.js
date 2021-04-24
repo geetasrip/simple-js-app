@@ -11,32 +11,31 @@ let pokemonRepository = (function() {
     return repository;
   }
   function addListItem(pokemon) {
-    let pokemonList = document.querySelector(".list-group");
-    let listpokemon = document.createElement("li");
-    let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    button.classList.add("btn", "btn-light");
-    listpokemon.classList.add("group-list-item");
-    button.setAttribute("data-target", "#exampleModal");
-    button.setAttribute("data-toggle", "modal");
-    listpokemon.appendChild(button);
-    pokemonList.appendChild(listpokemon);
+    $('<div class="new-class">Content is here!</div>');
+    let pokemonList = $(".list-group");
+    let listpokemon = $('<li class="group-list-item"></li>');
+    let button = $('<button class="btn btn-light"></button>');
+    button.text(pokemon.name);
+    button.attr("data-target", "#exampleModal");
+    button.attr("data-toggle", "modal");
+    listpokemon.append(button);
+    pokemonList.append(listpokemon);
     buttonClickAction(button, pokemon);
   }
   function buttonClickAction(button, pokemon) {
-    button.addEventListener("click", function(event) {
+    button.on("click", function() {
       showDetails(pokemon);
     });
   }
   function showDetails(pokemon) {
-      pokemonRepository.loadDetails(pokemon).then(function() {
-      let modalContainer = document.querySelector("#exampleModal");
-      let titleElement = document.querySelector(".modal-title");
-      titleElement.innerText = pokemon.name;
-      let contentElement = document.querySelector(".modal-image");
-      contentElement.src = pokemon.imageUrl;
-      let pokemonHeight = document.querySelector(".modal-data");
-      pokemonHeight.innerText = "Height : " + pokemon.height;
+    pokemonRepository.loadDetails(pokemon).then(function() {
+      let modalContainer = $("#exampleModal");
+      let titleElement = $(".modal-title");
+      titleElement.text(pokemon.name);
+      let contentElement = $(".modal-image");
+      contentElement.attr("src", pokemon.imageUrl);
+      let pokemonHeight = $(".modal-data");
+      pokemonHeight.text("Height : " + pokemon.height);
       button.setAttribute("data-target", "#exampleModal");
       button.setAttribute("data-toggle", "modal");
     });
