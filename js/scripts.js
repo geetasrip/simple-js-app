@@ -36,8 +36,6 @@ let pokemonRepository = (function() {
       contentElement.attr("src", pokemon.imageUrl);
       let pokemonHeight = $(".modal-data");
       pokemonHeight.text("Height : " + pokemon.height);
-      button.setAttribute("data-target", "#exampleModal");
-      button.setAttribute("data-toggle", "modal");
     });
   }
   function LoadList() {
